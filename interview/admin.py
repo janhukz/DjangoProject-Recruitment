@@ -9,7 +9,16 @@ class CandidateAdmin(admin.ModelAdmin):
     # 定义列表展示哪些字段
     list_display = (
         "username", "city", "bachelor_school", 'first_score', 'first_result', 'first_interviewer', 'second_result',
-        'second_interviewer', 'hr_score', 'hr_result', 'last_editor')
+        'second_interviewer', 'hr_score', 'hr_result', 'hr_interviewer', 'last_editor')
+
+    # 查询字段
+    search_fields = ('username', 'phone', 'email', 'bachelor_school')
+    # 筛选条件
+    list_filter = (
+        'city', 'first_result', 'second_result', 'hr_result', 'first_interviewer', 'second_interviewer',
+        'hr_interviewer')
+    # 排序字段
+    ordering = ('hr_result', 'second_result', 'first_result')
 
     # 给字段分组
     fieldsets = (
